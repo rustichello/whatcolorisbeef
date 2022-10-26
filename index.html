@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>What colors is beef?</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body class="demo">
+        <header>
+            <h1>What color is <span class="clr">#beef00</span></h1>
+        </header>
+            <button id='btn'>Try another</button>
+            <form>
+                <span class="filter">
+                        <label for="shorthand-plain">Include shorthands like <span class="highlight">#dad</span></label><input type="checkbox" id="shorthand-plain" class="select">
+                        <label>Show letter-only codes</label><input type="checkbox" id="nonumbers-plain">
+                </span>
+            </form>
+            <p class="about">Colors on web are often represented by six-digit codes called <a href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet" target="_blank">hex triplets</a>. They're made of numerals <span class="highlight">0</span> to <span class="highlight">9</span> and letters <span class="highlight">a</span> to <span class="highlight">f</span>, like this one: <span class="highlight">#3af67e</span>. Sometimes letters in a code accidently combine into a word, and this page is a collection of such colors. Check out what color is <a id="reload" href="file:///Users/Rust/beef/index.html">#beef00</a>!</p>
+            <p class="about">You can use shorthands like <span class="highlight">#abd</span> instead of full codes, when each pair (byte) in a triplet is made of repeating digits, like here: <span class="highlight">#aabbdd</span>.</p>
+        <div class="shd"></div>
+        <script src="beef.js">  
+        </script>
+    </body>
+</html>

@@ -1,0 +1,114 @@
+:root {
+    --color0:#beef00; /*initial background*/
+    --color1:rgba(0, 0, 0, 0.9); /*button*/
+    --color2:rgba(0, 0, 0, 0.7); /*button*/
+    --color3:rgba(0, 0, 0, 0.4); /*button*/
+    --color4:rgba(150, 150, 150, 0.5); /*highlight*/
+    --color5:#ffffff; /*text*/
+}
+
+a {
+    color: black;
+}
+a:hover {
+    color: red;
+}
+a:active {
+    color: red;
+}
+header {
+    width: 60%;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.demo{
+    background-color: var(--color0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+h1 {
+    font-size: 5em;
+    margin-top: 1em;
+    margin-bottom: 0.8em;
+}
+
+.about {
+    width: 60%;
+    font-size: 1.5em;
+    color: var(--color1);
+    margin: 0.5em 0.5em;
+}
+
+.highlight {
+    background-color: var(--color4);
+    padding: 0 0.2em;
+}
+
+#btn {
+    width: auto;
+    height: 64px;
+    padding: 0 1em;
+    border: none;
+    background-color: var(--color1);
+    color: var(--color5);
+    box-shadow: none;
+    font-size: 2em;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+}
+#btn:hover {
+    background-color: var(--color2);
+}
+#btn:active {
+    background-color: var(--color3);
+}
+form {
+    margin-top: 0.5em;
+    margin-bottom: 3em;
+    color: var(--color1);
+}
+.filter {
+    /*border: 1px solid rgba(150, 150, 150, 0.5);*/
+    padding: 1em 1em;
+    margin: 1em 0.5em;
+}
+input {
+    margin-right: 0.9em;
+}
+label {
+    margin-right: 0.1em;
+}
+.block {
+    width: 80px;
+    height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 10px;
+}
+.shades {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.shd {
+    width: 100%;
+    background-color: black;
+    margin-top: 2em;
+}
+h2 {
+    color: white;
+    text-align: center;
+}
