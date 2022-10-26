@@ -87,11 +87,11 @@ let colorsH = words.filter(w => w.length === 7 && regexH.test(w));
 colorsH = leet(colorsH);
 colorsH = addHashtag(colorsH);
 */
-            
+
 let btn = document.getElementById('btn');
 let clr = document.querySelector(".clr");
 let shd = document.querySelector(".shd");
-            
+
 let chk = false;
 document.getElementById('shorthand-plain').onclick = function() {
     if (this.checked) {
@@ -101,7 +101,7 @@ document.getElementById('shorthand-plain').onclick = function() {
         chk = false;
     }
 };
-            
+
 let chk1 = false;
 document.getElementById('nonumbers-plain').onclick = function() {
     if (this.checked) {
@@ -111,20 +111,73 @@ document.getElementById('nonumbers-plain').onclick = function() {
         chk1 = false;
     }
 };
-            
+
 btn.addEventListener('click', ()=>{
     let box = document.querySelector(".demo");
     function getRandomColor(min, max) {
         return Math.floor(Math.random() * (max - min) ) + min;
     }
- 
+
     function changeColor (arr) {
         i = getRandomColor(0, arr.length);
         box.style.background = arr[i];
         clr.innerHTML = arr[i];
-                    
+        
         if (arr[i].includes('0')) {
             shd.innerHTML = "";
+            function showShades (str) {
+                let numOfZeros = str.replace(/[^0-9]/g, '').length;
+                let arr1 = [];
+                let arr2 = [];
+                let arr3 = [];
+                str = str.replace(/[0-9]/g, '') + 0;
+
+                if (numOfZeros === 1) {
+                    for (let i = 0; i < 10; i++) {
+                        str = str.replace(/[0-9]$/, i);
+                        arr1.push(str);
+                    }
+                    arr1 = arr1.filter(w => !w.includes('0'));
+                    return arr1;
+                } 
+                else if (numOfZeros === 2) {
+                    for (let i = 0; i < 10; i++) {
+                        str = str.replace(/[0-9]$/, i);
+                        arr1.push(str);
+                    }
+                    for (let str of arr1) {
+                        str = str + 0;
+                        for (let i = 0; i < 10; i++) {
+                            str = str.replace(/[0-9]$/, i);
+                            arr2.push(str);
+                        }
+                    }
+                    arr2 = arr2.filter(w => !w.includes('00'));
+                    return arr2;
+                }
+                else {
+                    for (let i = 0; i < 10; i++) {
+                        str = str.replace(/[0-9]$/, i);
+                        arr1.push(str);
+                    }
+                    for (let str of arr1) {
+                        str = str + 0;
+                        for (let i = 0; i < 10; i++) {
+                            str = str.replace(/[0-9]$/, i);
+                            arr2.push(str);
+                        }
+                    }
+                    for (let str of arr2) {
+                    str = str + 0;
+                        for (let i = 0; i < 10; i++) {
+                            str = str.replace(/[0-9]$/, i);
+                            arr3.push(str);
+                        }
+                    }
+                    arr3 = arr3.filter(w => !w.includes('000'));
+                    return arr3;
+                }
+            }
             let allShades = showShades(arr[i]);
             let ttl = document.createElement('h2');
             ttl.innerHTML = allShades.length + " shades of " + arr[i] + ":" + "<br />";
@@ -139,7 +192,7 @@ btn.addEventListener('click', ()=>{
                 iDiv.className = "block";
                 return iDiv;
             }
-                            
+                
             let myDivs = [];
             for (i = 0; i < allShades.length; i++) {
                 myDivs.push(createDiv());
@@ -166,3 +219,13 @@ btn.addEventListener('click', ()=>{
         changeColor(colors);
     };
 });
+
+/*
+console.log("Dictionary(" + dic.length + "): " + dic);
+console.log("Shorthands dictionary(" + dic1.length + "): " + dic1);
+console.log("Plain colors(" + colors.length + "): " + colors);
+console.log("Same as colorShorthands(" + allColors.length + "): " + allColors);
+console.log("colorsShorthands(" + colorsShorthands.length + "): " + colorsShorthands);
+console.log("Letters-only colors(" + colorsLettersOnly.length + "): " + colorsLettersOnly);
+console.log("Letters and shorthands(" + colorsLettersAndShorthands.length + "): " + colorsLettersAndShorthands);
+*/
