@@ -20,7 +20,147 @@
             <p class="about">Colors on web are often represented by six-digit codes called <a href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet" target="_blank">hex triplets</a>. They're made of numerals <span class="highlight">0</span> to <span class="highlight">9</span> and letters <span class="highlight">a</span> to <span class="highlight">f</span>, like this one: <span class="highlight">#3af67e</span>. Sometimes letters in a code accidently combine into a word, and this page is a collection of such colors. Check out what color is <a id="reload" href="file:///Users/Rust/beef/index.html">#beef00</a>!</p>
             <p class="about">You can use shorthands like <span class="highlight">#abd</span> instead of full codes, when each pair (byte) in a triplet is made of repeating digits, like here: <span class="highlight">#aabbdd</span>.</p>
         <div class="shd"></div>
-        <script src="beef.js">  
+        <script>
+            let regexNoNum = /^#[a-f]+$/i;
+            
+            let allColors = ['#aba', '#abb', '#ace', '#add', '#aff', '#baa', '#bac', '#bad', '#bed', '#bee', '#caa', '#cab', '#cad', '#cee', '#dab', '#dad', '#dae', '#deb', '#dee', '#def', '#ebb', '#eff', '#faa', '#fab', '#fad', '#fae', '#fed', '#fee', '#aba000', '#abac00', '#abaca0', '#abb000', '#abba00', '#abbe00', '#abbed0', '#abcee0', '#abed00', '#acca00', '#accede', '#ace000', '#aced00', '#add000', '#added0', '#aff000', '#baa000', '#baaed0', '#baba00', '#babe00', '#bac000', '#bacca0', '#baccae', '#bad000', '#bade00', '#baff00', '#baffed', '#bead00', '#beaded', '#bed000', '#bedad0', '#bedded', '#bede00', '#bee000', '#beebee', '#beef00', '#beefed', '#caa000', '#caaed0', '#cab000', '#caba00', '#cabbed', '#caca00', '#cad000', '#cade00', '#cadee0', '#caeca0', '#cafe00', '#caff00', '#ceca00', '#cede00', '#ceded0', '#cee000', '#dab000', '#dabba0', '#dabbed', '#dace00', '#dad000', '#dada00', '#dadded', '#dae000', '#daff00', '#daffed', '#dead00', '#deaded', '#deaf00', '#deb000', '#debe00', '#decad0', '#decade', '#decaf0', '#decaff', '#dee000', '#deed00', '#deeded', '#def000', '#deface', '#ebb000', '#ebbed0', '#ecad00', '#ecce00', '#eff000', '#efface', '#effed0', '#faa000', '#fab000', '#facade', '#face00', '#faced0', '#fad000', '#fade00', '#faded0', '#fae000', '#faff00', '#faffed', '#fed000', '#fee000', '#feeb00', '#feed00'];
+            let colors = allColors.filter(w => w.length === 7);
+            let colorsShorthands = allColors;
+            let colorsLettersOnly = allColors.filter(w => regexNoNum.test(w) && w.length === 7);
+            let colorsLettersAndShorthands = allColors.filter(w => regexNoNum.test(w));
+            
+            let btn = document.getElementById('btn');
+            let clr = document.querySelector(".clr");
+            let shd = document.querySelector(".shd");
+            
+            let chk = false;
+            document.getElementById('shorthand-plain').onclick = function() {
+                if (this.checked) {
+                    chk = true;
+                }
+                else {
+                    chk = false;
+                }
+            };
+            
+            let chk1 = false;
+            document.getElementById('nonumbers-plain').onclick = function() {
+                if (this.checked) {
+                    chk1 = true;
+                }
+                else {
+                    chk1 = false;
+                }
+            };
+            
+            btn.addEventListener('click', ()=>{
+                let box = document.querySelector(".demo");
+                function getRandomColor(min, max) {
+                    return Math.floor(Math.random() * (max - min) ) + min;
+                }
+ 
+                function changeColor (arr) {
+                    i = getRandomColor(0, arr.length);
+                    box.style.background = arr[i];
+                    clr.innerHTML = arr[i];
+                    
+                    if (arr[i].includes('0')) {
+                        shd.innerHTML = "";
+                        function showShades (str) {
+                            let numOfZeros = str.replace(/[^0-9]/g, '').length;
+                            let arr1 = [];
+                            let arr2 = [];
+                            let arr3 = [];
+                            str = str.replace(/[0-9]/g, '') + 0;
+
+                            if (numOfZeros === 1) {
+                                for (let i = 0; i < 10; i++) {
+                                    str = str.replace(/[0-9]$/, i);
+                                    arr1.push(str);
+                                }
+                                arr1 = arr1.filter(w => !w.includes('0'));
+                                return arr1;
+                            } 
+                            else if (numOfZeros === 2) {
+                                for (let i = 0; i < 10; i++) {
+                                    str = str.replace(/[0-9]$/, i);
+                                    arr1.push(str);
+                                }
+                                for (let str of arr1) {
+                                    str = str + 0;
+                                    for (let i = 0; i < 10; i++) {
+                                        str = str.replace(/[0-9]$/, i);
+                                        arr2.push(str);
+                                    }
+                                }
+                                arr2 = arr2.filter(w => !w.includes('00'));
+                                return arr2;
+                            }
+                            else {
+                                for (let i = 0; i < 10; i++) {
+                                    str = str.replace(/[0-9]$/, i);
+                                    arr1.push(str);
+                                }
+                                for (let str of arr1) {
+                                    str = str + 0;
+                                    for (let i = 0; i < 10; i++) {
+                                        str = str.replace(/[0-9]$/, i);
+                                        arr2.push(str);
+                                    }
+                                }
+                                for (let str of arr2) {
+                                str = str + 0;
+                                    for (let i = 0; i < 10; i++) {
+                                        str = str.replace(/[0-9]$/, i);
+                                        arr3.push(str);
+                                    }
+                                }
+                                arr3 = arr3.filter(w => !w.includes('000'));
+                                return arr3;
+                            }
+                        }
+                        let allShades = showShades(arr[i]);
+                        let ttl = document.createElement('h2');
+                        ttl.innerHTML = allShades.length + " shades of " + arr[i] + ":" + "<br />";
+                        shd.appendChild(ttl);
+
+                        let shades = document.createElement('div');
+                        shades.className = 'shades';
+                        shd.appendChild(shades);
+
+                        function createDiv() {
+                            let iDiv = document.createElement("div");
+                            iDiv.className = "block";
+                            return iDiv;
+                        }
+                            
+                        let myDivs = [];
+                        for (i = 0; i < allShades.length; i++) {
+                            myDivs.push(createDiv());
+                            shades.appendChild(myDivs[i]);
+                            myDivs[i].innerHTML = allShades[i];
+                            myDivs[i].style.background = allShades[i]; 
+                        }
+                    }
+                    else {
+                        shd.innerHTML = "";
+                    }
+                };
+
+                if (chk === true && chk1 === false) {
+                    changeColor(colorsShorthands);
+                }
+                else if (chk === false && chk1 === true) {
+                    changeColor(colorsLettersOnly);
+                }
+                else if (chk === true && chk1 === true) {
+                    changeColor(colorsLettersAndShorthands);
+                }
+                else {
+                    changeColor(colors);
+                };
+            });
+            
         </script>
     </body>
 </html>
