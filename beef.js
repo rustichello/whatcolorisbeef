@@ -225,13 +225,3 @@ btn.addEventListener('click', ()=>{
         changeColor(colors);
     };
 });
-
-/*
-console.log("Dictionary(" + dic.length + "): " + dic);
-console.log("Shorthands dictionary(" + dic1.length + "): " + dic1);
-console.log("Plain colors(" + colors.length + "): " + colors);
-console.log("Same as colorShorthands(" + allColors.length + "): " + allColors);
-console.log("colorsShorthands(" + colorsShorthands.length + "): " + colorsShorthands);
-console.log("Letters-only colors(" + colorsLettersOnly.length + "): " + colorsLettersOnly);
-console.log("Letters and shorthands(" + colorsLettersAndShorthands.length + "): " + colorsLettersAndShorthands);
-*/
