@@ -12,20 +12,10 @@ function addHashtag (arr) {
 };
 function addZeros (arr) {
     return arr.map(x => {
-        if (x.length === 4) {
-            return x + "000";
-        }
-        if (x.length === 5) {
-            return x + "00";
-        }
-        if (x.length === 6) {
-            return x + "0";
-        }
-        else {
-            return x;
-        }
-    }
-    );
+        let o = '0000000';
+        let i = 7 - x.length;
+        return x + o.slice(0,i);
+    });
 };
 function showShades (str) {
     let numOfZeros = str.replace(/[^0-9]/g, '').length;
@@ -33,6 +23,31 @@ function showShades (str) {
     let arr2 = [];
     let arr3 = [];
     str = str.replace(/[0-9]/g, '') + 0;
+
+    if (numOfZeros === 1) {
+        for (let i = 0; i < 10; i++) {
+            str = str.replace(/[0-9]$/, i);
+            arr1.push(str);
+        }
+        arr1 = arr1.filter(w => !w.includes('0'));
+        return arr1;
+    } 
+    else if (numOfZeros === 2) {
+        for (let i = 0; i < 10; i++) {
+            str = str.replace(/[0-9]$/, i);
+            arr1.push(str);
+        }
+        for (let str of arr1) {
+            str = str + 0;
+            for (let i = 0; i < 10; i++) {
+                str = str.replace(/[0-9]$/, i);
+                arr2.push(str);
+            }
+        }
+        arr2 = arr2.filter(w => !w.includes('00'));
+        return arr2;
+    }
+    else {
         for (let i = 0; i < 10; i++) {
             str = str.replace(/[0-9]$/, i);
             arr1.push(str);
@@ -45,24 +60,15 @@ function showShades (str) {
             }
         }
         for (let str of arr2) {
-            str = str + 0;
+        str = str + 0;
             for (let i = 0; i < 10; i++) {
                 str = str.replace(/[0-9]$/, i);
                 arr3.push(str);
             }
         }
-        if (numOfZeros === 1) {
-            arr1 = arr1.filter(w => !w.includes('0'));
-            return arr1;
-        } 
-        else if (numOfZeros === 2) {
-            arr2 = arr2.filter(w => !w.includes('00'));
-            return arr2;
-        }
-        else {
-            arr3 = arr3.filter(w => !w.includes('000'));
-            return arr3;
-        }
+        arr3 = arr3.filter(w => !w.includes('000'));
+        return arr3;
+    }
 };
 
 let dic = words.filter(w => w.length > 2 && w.length < 7 && regex.test(w));
