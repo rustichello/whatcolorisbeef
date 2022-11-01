@@ -214,19 +214,3 @@ let box = document.querySelector(".demo");
                         changeColor(colors);
                     }
             });
-
-console.log('Norm: ');
-console.log(leetColors);
-console.log("Dictionary(" + dic.length + "): " + dic);
-console.log("Shorthands dictionary(" + dic1.length + "): " + dic1);
-console.log("Plain colors initial(" + colors.length + "): " + colors);
-console.log("Plain with shorts(" + colorsShorthands.length + "): " + colorsShorthands);
-console.log("Letters-only colors(" + colorsLettersOnly.length + "): " + colorsLettersOnly);
-console.log("Letters and shorthands(" + colorsLettersAndShorthands.length + "): " + colorsLettersAndShorthands);
-console.log('Leet: ');
-console.log("Leet only(" + leetColors.length + "): " + leetColors);
-console.log("leet shorthands(" + dic2.length + "): " + dic2);
-console.log("Leet all with shorthands(" + leetColorsWShort.length + "): " + leetColorsWShort);
-console.log("Leet starting H(" + leetColorsStartingH.length + "): " + leetColorsStartingH);
-console.log("leet shorthands starting h(" + dic3.length + "): " + dic3);
-console.log("leet starting h with shorthands starting h(" + leetColorsStartingHWShort.length + "): " + leetColorsStartingHWShort);
