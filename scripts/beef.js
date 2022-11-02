@@ -1,4 +1,4 @@
-const words = require('an-array-of-english-words');
+const words = requirejs('an-array-of-english-words');
 
 let regex = /^[a-f]+$/i; //norm
 let regexLeet = /^[abcdefgiostz]+$/i; //leet
