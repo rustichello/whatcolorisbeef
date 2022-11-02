@@ -1,7 +1,5 @@
 import words from "an-array-of-english-words";
 
-//const words = requirejs('an-array-of-english-words');
-
 let regex = /^[a-f]+$/i; //norm
 let regexLeet = /^[abcdefgiostz]+$/i; //leet
 let regexH = /^h{1}[abcdefgiostz]+$/i; //leet starting with h
