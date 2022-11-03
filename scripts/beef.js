@@ -150,7 +150,7 @@ let box = document.querySelector(".demo");
 
             btn.addEventListener('click', ()=>{
                 function changeColor (arr) {
-                    i = getRandomColor(0, arr.length);
+                    let i = getRandomColor(0, arr.length);
                     box.style.background = arr[i];
                     clr.innerHTML = arr[i];
                     if (radNorm.checked === true && arr[i].includes('0')) {
