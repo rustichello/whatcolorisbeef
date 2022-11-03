@@ -1,4 +1,4 @@
-import words from "an-array-of-english-words";
+import { words } from 'https://github.com/rustichello/an-array-of-english-words/index.json';
 
 let regex = /^[a-f]+$/i; //norm
 let regexLeet = /^[abcdefgiostz]+$/i; //leet
